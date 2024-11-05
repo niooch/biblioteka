@@ -3,23 +3,33 @@ package pl.biblioteka.ui;
 import pl.biblioteka.serwis.*;
 import pl.biblioteka.model.*;
 import java.util.Scanner;
-
+/**
+* @Class Ui
+* Klasa odpowiada za interakcje z uzytkownikiem
+* Ui posiada metody dodajKsiazke, dodajEgzemplarz, dodajCzytelnika, wypozyczEgzemplarz, wyswietlKsiazki, wyswietlCzytelnikow, start, wyswietlMenu
+*/
 public class Ui {
     private BibliotekaSerwis bibliotekaSerwis;
     private Scanner scanner;
-
+    /**
+    * Konstruktor Ui
+    * Tworzy nowy serwis biblioteczny oraz skaner
+    */
     public Ui() {
         bibliotekaSerwis = new BibliotekaSerwis();
         scanner = new Scanner(System.in);
     }
-
-    public void start(){
+    /**
+    * Metoda start
+    * Rozpoczyna dzialanie programu
+    */
+    public void start() {
         int opcja = 0;
-        do{
+        do {
             wyswietlMenu();
             opcja = scanner.nextInt();
             scanner.nextLine();
-            switch(opcja){
+            switch (opcja) {
                 case 1:
                     dodajKsiazke();
                     break;
@@ -44,10 +54,13 @@ public class Ui {
                 default:
                     System.out.println("Niepoprawna opcja");
             }
-        }while(opcja != 7);
+        } while (opcja != 7);
     }
-
-    public void wyswietlMenu(){
+    /**
+    * Metoda wyswietlMenu
+    * Wyswietla menu programu
+    */
+    public void wyswietlMenu() {
         System.out.println();
         System.out.println("-------------Menu--------------");
         System.out.println("1. Dodaj ksiazke");
@@ -62,8 +75,11 @@ public class Ui {
         System.out.println("Wybierz opcje: ");
     }
 
-
-    public void dodajKsiazke(){
+    /**
+    * Metoda dodajKsiazke
+    * Dodaje ksiazke do repozytorium ksiazek
+    */
+    public void dodajKsiazke() {
         System.out.println("Podaj tytul ksiazki: ");
         String tytul = scanner.nextLine();
         System.out.println("Podaj autora ksiazki: ");
@@ -71,7 +87,7 @@ public class Ui {
         bibliotekaSerwis.dodajKsiazke(tytul, autor);
     }
 
-    public void dodajEgzemplarz(){
+    public void dodajEgzemplarz() {
         System.out.println("Podaj tytul ksiazki: ");
         String tytul = scanner.nextLine();
         System.out.println("Podaj id egzemplarza: ");
@@ -79,7 +95,7 @@ public class Ui {
         bibliotekaSerwis.dodajEgzemplarz(tytul, id);
     }
 
-    public void dodajCzytelnika(){
+    public void dodajCzytelnika() {
         System.out.println("Podaj imie czytelnika: ");
         String imie = scanner.nextLine();
         System.out.println("Podaj nazwisko czytelnika: ");
@@ -89,7 +105,7 @@ public class Ui {
         bibliotekaSerwis.dodajCzytelnika(imie, nazwisko, id);
     }
 
-    public void wypozyczEgzemplarz(){
+    public void wypozyczEgzemplarz() {
         System.out.println("Podaj tytul ksiazki: ");
         String tytul = scanner.nextLine();
         System.out.println("Podaj id egzemplarza: ");
@@ -99,10 +115,10 @@ public class Ui {
         bibliotekaSerwis.wypozyczEgzemplarz(tytul, idEgzemplarza, idCzytelnika);
     }
 
-    public void wyswietlKsiazki(){
+    public void wyswietlKsiazki() {
         System.out.println("Lista książek:");
         for (Ksiazka ksiazka : bibliotekaSerwis.getAllKsiazki()) {
-            System.out.println("- " + "\"" + ksiazka.getTytul()+ "\"" + " " + ksiazka.getAutor());
+            System.out.println("- " + "\"" + ksiazka.getTytul() + "\"" + " " + ksiazka.getAutor());
             System.out.println("  Egzemplarze:");
             for (Egzemplarz egzemplarz : ksiazka.getEgzemplarze()) {
                 String status = egzemplarz.isWypozyczony() ? "Wypozyczony" : "Dostepny";
@@ -112,13 +128,13 @@ public class Ui {
     }
 
 
-    public void wyswietlCzytelnikow(){
-        for(Czytelnik czytelnik : bibliotekaSerwis.getAllCzytelnicy()){
+    public void wyswietlCzytelnikow() {
+        for (Czytelnik czytelnik : bibliotekaSerwis.getAllCzytelnicy()) {
             System.out.println(czytelnik.getImie() + " " + czytelnik.getNazwisko());
         }
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         new Ui().start();
     }
 

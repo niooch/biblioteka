@@ -1,30 +1,44 @@
 package pl.biblioteka.model;
-
-public class Egzemplarz{
+/**
+* @Class Egzemplarz
+* Klasa przechowuje informacje o egzemplarzu
+* Egzemplarz posiada id, informacje o tym czy jest wypozyczony oraz informacje o aktualnym czytelniku
+*/
+public class Egzemplarz {
+    /**
+    * id - identyfikator egzemplarzu
+    * wypozyczony - informacja o tym czy egzemplarz jest wypozyczony
+    * aktualnyCzytelnik - informacja o aktualnym czytelniku
+    */
     private int id;
     private boolean wypozyczony;
     private Czytelnik aktualnyCzytelnik;
-
-    public Egzemplarz(int id){
+    /**
+    * Konstruktor klasy Egzemplarz
+    * @param id - identyfikator egzemplarzu
+    */
+    public Egzemplarz(int id) {
         this.id = id;
         this.wypozyczony = false;
         this.aktualnyCzytelnik = null;
     }
-
-    //gettery
-    public int getId(){
+    /**
+    * Metoda zwraca identyfikator egzemplarzu
+    * @return id - identyfikator egzemplarzu
+    */
+    public int getId() {
         return this.id;
     }
-    public boolean isWypozyczony(){
+    public boolean isWypozyczony() {
         return this.wypozyczony;
     }
-    public Czytelnik getAktualnyCzytelnik(){
+    public Czytelnik getAktualnyCzytelnik() {
         return this.aktualnyCzytelnik;
     }
-    public void setWypozyczony(boolean wypozyczony){
+    public void setWypozyczony(boolean wypozyczony) {
         this.wypozyczony = wypozyczony;
     }
-    public void setAktualnyCzytelnik(Czytelnik aktualnyCzytelnik){
+    public void setAktualnyCzytelnik(Czytelnik aktualnyCzytelnik) {
         this.aktualnyCzytelnik = aktualnyCzytelnik;
     }
 }

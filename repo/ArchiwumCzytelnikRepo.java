@@ -5,7 +5,11 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+* @Class ArchiwumCzytelnikRepo
+* Klasa przechowuje informacje o czytelnikach
+* ArchiwumCzytelnikRepo posiada liste czytelnikow
+*/
 public class ArchiwumCzytelnikRepo implements CzytelnikRepo {
     private Map<Integer, Czytelnik> czytelnicy = new HashMap<>();
 
