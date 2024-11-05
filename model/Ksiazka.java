@@ -24,6 +24,6 @@ public class Ksiazka{
     }
 
     public void dodajEgzemplarz(Egzemplarz egzemplarz){
-        egzemplarze.add(egzemplarze);
+        egzemplarze.add(egzemplarz);
     }
 }

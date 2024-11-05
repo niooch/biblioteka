@@ -33,3 +33,4 @@ public class Czytelnik{
     public List<Egzemplarz> getWypozyczoneEgzemplarze(){
         return wypozyczoneEgzemplarze;
     }
+}

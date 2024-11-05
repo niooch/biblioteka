@@ -4,18 +4,18 @@ import pl.biblioteka.model.*;
 import pl.biblioteka.repo.*;
 import java.util.List;
 
-public class BibliotekSerwis {
+public class BibliotekaSerwis {
     private final KsiazkaRepo ksiazkaRepo;
     private final CzytelnikRepo czytelnikRepo;
 
-    public BibliotekSerwis() {
+    public BibliotekaSerwis() {
         this.ksiazkaRepo = new ArchiwumKsiazkaRepo();
         this.czytelnikRepo = new ArchiwumCzytelnikRepo();
     }
 
     public void dodajKsiazke(String tytul, String autor){
         Ksiazka ksiazka = new Ksiazka(tytul, autor);
-        ksiazkaRepo.dodajKsiazke(ksiazka);
+        ksiazkaRepo.dodajKsiazke(tytul, ksiazka);
     }
 
     public void dodajCzytelnika(String imie, String nazwisko, int id){
@@ -43,7 +43,7 @@ public class BibliotekSerwis {
                 if(egzemplarz.getId() == idEgzemplarza && !egzemplarz.isWypozyczony()){
                     egzemplarz.setWypozyczony(true);
                     egzemplarz.setAktualnyCzytelnik(czytelnik);
-                    czytelnik.dodajWypozyczonaKsiazke(egzemplarz);
+                    czytelnik.wypozyczEgzemplarz(egzemplarz);
                     System.out.println("Wypozyczono egzemplarz");
                     return;
                 }
@@ -51,9 +51,9 @@ public class BibliotekSerwis {
                     System.out.println("Nie ma takiego egzemplarza");
                 }
             }
-            else{
-                System.out.println("Ksiazka lub egzemplarz nie istnieje");
-            }
+        }
+        else{
+            System.out.println("Ksiazka lub egzemplarz nie istnieje");
         }
     }
 
@@ -64,3 +64,7 @@ public class BibliotekSerwis {
     public List<Czytelnik> getAllCzytelnicy(){
         return czytelnikRepo.getAllCzytelnicy();
     }
+    public Czytelnik getCzytelnikById(int id){
+        return czytelnikRepo.znajdzCzytelnika(id);
+    }
+}

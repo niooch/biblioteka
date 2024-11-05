@@ -21,10 +21,10 @@ public class Egzemplarz{
     public Czytelnik getAktualnyCzytelnik(){
         return this.aktualnyCzytelnik;
     }
-    public setWypozyczony(boolean wypozyczony){
+    public void setWypozyczony(boolean wypozyczony){
         this.wypozyczony = wypozyczony;
     }
-    public setAktualnyCzytelnik(Czytelnik aktualnyCzytelnik){
+    public void setAktualnyCzytelnik(Czytelnik aktualnyCzytelnik){
         this.aktualnyCzytelnik = aktualnyCzytelnik;
     }
 }

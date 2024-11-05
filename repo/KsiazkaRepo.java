@@ -1,11 +1,10 @@
 package pl.biblioteka.repo;
 
-import pl.biblioteka.model.Ksiazka;
+import pl.biblioteka.model.*;
 import java.util.List;
 
 public interface KsiazkaRepo {
-    List<Ksiazka> getWszystkie();
-    Ksiazka znajdz(String tytul);
-    void dodaj(Ksiazka ksiazka);
-    void usun(int id);
+    List<Ksiazka> getAllKsiazki();
+    Ksiazka znajdzKsiazke(String tytul);
+    void dodajKsiazke(String tytul, Ksiazka ksiazka);
 }

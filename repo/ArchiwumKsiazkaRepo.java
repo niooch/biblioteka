@@ -1,6 +1,6 @@
 package pl.biblioteka.repo;
 
-import pl.biblioteka.model.Ksiazka;
+import pl.biblioteka.model.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,15 +11,15 @@ public class ArchiwumKsiazkaRepo implements KsiazkaRepo {
     private Map<String, Ksiazka> ksiazki = new HashMap<>();
 
     @Override
-    public void dodaj(Ksiazka ksiazka) {
-        ksiazki.put(ksiazka.getId(), ksiazka);
+    public void dodajKsiazke(String tytul, Ksiazka ksiazka) {
+        ksiazki.put(tytul, ksiazka);
     }
     @Override
-    public List<Ksiazka> getWszystkie() {
+    public List<Ksiazka> getAllKsiazki() {
         return new ArrayList<>(ksiazki.values());
     }
     @Override
-    public Ksiazka znajdz(String tytul) {
+    public Ksiazka znajdzKsiazke(String tytul) {
         return ksiazki.get(tytul);
     }
 }

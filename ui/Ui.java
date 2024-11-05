@@ -1,8 +1,7 @@
 package pl.biblioteka.ui;
 
-import pl.biblioteka.serwis.Biblioteka;
-import pl.biblioteka.model.Ksiazka;
-import pl.biblioteka.model.Czytelnik;
+import pl.biblioteka.serwis.*;
+import pl.biblioteka.model.*;
 import java.util.Scanner;
 
 public class Ui {
@@ -49,7 +48,8 @@ public class Ui {
     }
 
     public void wyswietlMenu(){
-        System.out.println("---Menu---");
+        System.out.println();
+        System.out.println("-------------Menu--------------");
         System.out.println("1. Dodaj ksiazke");
         System.out.println("2. Dodaj egzemplarz");
         System.out.println("3. Dodaj czytelnika");
@@ -57,8 +57,11 @@ public class Ui {
         System.out.println("5. Wyswietl ksiazki");
         System.out.println("6. Wyswietl czytelnikow");
         System.out.println("7. Wyjscie");
+        System.out.println("-------------------------------");
+        System.out.println();
         System.out.println("Wybierz opcje: ");
     }
+
 
     public void dodajKsiazke(){
         System.out.println("Podaj tytul ksiazki: ");
@@ -97,10 +100,17 @@ public class Ui {
     }
 
     public void wyswietlKsiazki(){
-        for(Ksiazka ksiazka : bibliotekaSerwis.getAllKsiazki()){
-            System.out.println(ksiazka.getTytul() + " " + ksiazka.getAutor());
+        System.out.println("Lista książek:");
+        for (Ksiazka ksiazka : bibliotekaSerwis.getAllKsiazki()) {
+            System.out.println("- " + "\"" + ksiazka.getTytul()+ "\"" + " " + ksiazka.getAutor());
+            System.out.println("  Egzemplarze:");
+            for (Egzemplarz egzemplarz : ksiazka.getEgzemplarze()) {
+                String status = egzemplarz.isWypozyczony() ? "Wypozyczony" : "Dostepny";
+                System.out.println("    * Numer: " + egzemplarz.getId() + " - " + status);
+            }
         }
     }
+
 
     public void wyswietlCzytelnikow(){
         for(Czytelnik czytelnik : bibliotekaSerwis.getAllCzytelnicy()){
@@ -111,3 +121,5 @@ public class Ui {
     public static void main(String[] args){
         new Ui().start();
     }
+
+}

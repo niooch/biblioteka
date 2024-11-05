@@ -1,10 +1,10 @@
 package pl.biblioteka.repo;
 
-import pl.biblioteka.model.Czytelnik;
+import pl.biblioteka.model.*;
 import java.util.List;
 
 public interface CzytelnikRepo {
-    void dodaj(Czytelnik czytelnik);
-    Czytelnik znajdz(int id);
-    List<Czytelnik> getWszyscy();
+    void dodajCzytelnika(Czytelnik czytelnik);
+    Czytelnik znajdzCzytelnika(int id);
+    List<Czytelnik> getAllCzytelnicy();
 }
